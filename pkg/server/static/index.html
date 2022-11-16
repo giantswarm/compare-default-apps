@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Default app comparsion</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="normalize.css">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body style="margin: 10px;">
+  <div>
+    <nav>
+      <div class="nav nav-tabs" id="navtab" role="tablist">
+        <button class="nav-link active" id="nav-properties-tab" data-bs-toggle="tab" data-bs-target="#nav-properties" type="button" role="tab" aria-controls="nav-properties" aria-selected="true">Properties</button>
+      </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-properties" role="tabpanel" aria-labelledby="nav-properties-tab" tabindex="0">
+        <table id="appsTable" class="table table-hover sortable" data-toggle="table">
+          <thead class="table-light" style="position: sticky; top: 0;">
+            <tr>
+              <th scope="col">Property</th>
+            </tr>
+          </thead>
+          <tbody id="appsTableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="javascript.js"></script>
+  <script>
+  $(document).ready(function() {
+    fetch('/data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        // Populate apps
+        let table = $('#appsTable');
+        let headerRow = table.find('thead tr');
+        data.DefaultApps.forEach(defaultApp => {
+          headerRow.append('<th scope="col" class="ctd"><div>'+ defaultApp.ProviderName +'</div><div><a href="'+ defaultApp.RepositoryURL +'">repo</a> <a href="'+ defaultApp.ValuesURL +'">values</a></div></th>');
+        });
+        let tbody = table.find('#appsTableBody');
+        data.AppNames.forEach(app => {
+          let row = $('<tr><th scope="row" class="prop">'+ app +'</th></tr>');
+          data.Providers.forEach(provider => {
+            let field = $('<td class="ctd"></td>');
+            
+            if (typeof data.AppsAndProviders[app][provider] !== 'undefined') {
+              if (data.AppsAndProviders[app][provider].Version) {
+                field.append('<p class="type">' + data.AppsAndProviders[app][provider].Version + '</p>');
+              } else {
+                field.append('<p class="type notype">No type</p>');
+              }
+
+              if (data.AppsAndProviders[app][provider].Catalog !== '') {
+                field.append('<p class="title">' + data.AppsAndProviders[app][provider].Catalog + '</p>');
+              } else {
+                field.append('<p class="title notitle">No</p>');
+              }
+            }
+
+            row.append(field);
+          });
+          tbody.append(row);
+        });
+
+      });
+    
+    // Enable tabs
+    const triggerTabList = document.querySelectorAll('#navtab button');
+    triggerTabList.forEach(triggerEl => {
+      const tabTrigger = new bootstrap.Tab(triggerEl);
+
+      triggerEl.addEventListener('click', event => {
+        event.preventDefault();
+        tabTrigger.show();
+      });
+    });
+  });
+  </script>
+</body>
+
+</html>
