@@ -2,7 +2,7 @@
 
 Example screenshot
 
-<img width="1437" alt="image" src="">
+<img width="1437" alt="image" src="https://github.com/giantswarm/compare-default-apps/blob/main/image.png">
 
 ## Usage
 
