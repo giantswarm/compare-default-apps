@@ -34,11 +34,6 @@ var (
 			RepositoryURL: "https://github.com/giantswarm/default-apps-vsphere",
 			ValuesURL:     "https://raw.githubusercontent.com/giantswarm/default-apps-vsphere/main/helm/default-apps-vsphere/values.yaml",
 		},
-		{
-			ProviderName:  "EKS",
-			RepositoryURL: "https://github.com/giantswarm/default-apps-eks",
-			ValuesURL:     "https://raw.githubusercontent.com/giantswarm/default-apps-eks/master/helm/default-apps-eks/values.yaml",
-		},
 	}
 
 	url = "http://localhost:8080/"
