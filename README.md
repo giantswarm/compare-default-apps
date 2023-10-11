@@ -25,6 +25,7 @@ default-apps are our means to provision workload clusters with basic capabilitie
 | GCP | [default-apps-gcp](https://github.com/giantswarm/default-apps-gcp) | [Apps](https://raw.githubusercontent.com/giantswarm/default-apps-gcp/main/helm/default-apps-gcp/values.yaml) |
 | OpenStack | [default-apps-openstack](https://github.com/giantswarm/default-apps-openstack) | [Schema](https://raw.githubusercontent.com/giantswarm/default-apps-openstack/main/helm/default-apps-openstack/values.yaml) |
 | VSphere | [default-apps-vsphere](https://github.com/giantswarm/default-apps-vsphere) | [Schema](https://raw.githubusercontent.com/giantswarm/default-apps-vsphere/main/helm/default-apps-vsphere/values.yaml) |
-| Azure | [default-apps-azure](https://github.com/giantswarm/default-apps-azure) | [Schema](https://raw.githubusercontent.com/giantswarm/default-apps-vsphere/main/helm/default-apps-vsphere/values.yaml) |
+| Azure | [default-apps-azure](https://github.com/giantswarm/default-apps-azure) | [Schema](https://raw.githubusercontent.com/giantswarm/default-apps-azure/main/helm/default-apps-azure/values.yaml) |
+| EKS | [default-apps-eks](https://github.com/giantswarm/default-apps-eks) | [Schema](https://github.com/giantswarm/default-apps-eks/blob/master/helm/default-apps-eks/values.yaml) |
 
 This repository provides tooling to visualize which apps are default on each provider.
